@@ -42,7 +42,14 @@ export default class extends Component {
 		} = this.state;
 
 		return (
-			<div>
+			<div
+				style={{
+					backgroundColor: background,
+					height: '100vh',
+					padding: 20,
+					boxSizing: 'border-box'
+				}}
+			>
 				<div>
 					<input type='color' onChange={this.onChangeBackground} value={background}/>
 					<input type='color' onChange={this.onChangePrimary} value={primary}/>
