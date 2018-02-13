@@ -26,7 +26,7 @@ const getHash = () => {
 }
 
 export default class extends Component {
-	componentDidMount() {
+	componentWillMount() {
 		const hash = getHash();
 
 		if (hash && this.props.onChange) {
@@ -34,7 +34,7 @@ export default class extends Component {
 		}
 	}
 
-	componentWillReceiveProps() {
+	componentDidUpdate() {
 		setHash(this.props);
 	}
 
