@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Logo from './Logo';
+import Serializer from './Serializer';
 
 export default class extends Component {
 	constructor(props) {
@@ -14,6 +15,11 @@ export default class extends Component {
 		this.onChangePrimary = this.onChangePrimary.bind(this);
 		this.onChangeSecondary = this.onChangeSecondary.bind(this);
 		this.onChangeBackground = this.onChangeBackground.bind(this);
+		this.onChange = this.onChange.bind(this);
+	}
+
+	onChange(values) {
+		this.setState({...this.state, ...values});
 	}
 
 	onChangePrimary({target: {value}}) {
@@ -42,7 +48,17 @@ export default class extends Component {
 					<input type='color' onChange={this.onChangePrimary} value={primary}/>
 					<input type='color' onChange={this.onChangeSecondary} value={secondary}/>
 				</div>
-				<Logo background={background} primary={primary} secondary={secondary} />
+				<Logo
+					background={background}
+					primary={primary}
+					secondary={secondary}
+				/>
+				<Serializer
+					background={background}
+					primary={primary}
+					secondary={secondary}
+					onChange={this.onChange}
+				/>
 			</div>
 		)
 	}
